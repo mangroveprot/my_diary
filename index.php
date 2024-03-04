@@ -1,18 +1,14 @@
 <?php
-require 'database/db_connection.php';
+require_once 'database/dbModel.php';
 
-$conn = connections();
+$user = new User($conn);
 
-$sql = "SELECT * FROM users";
-$result = $conn->query($sql);
+$username = 'john_doe';
+$password = 'password123';
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["uid"]. " - Name: " . $row["first_name"]. "<br>";
-    }
+if ($user->loginUser($username, $password)) {
+    echo "Login successful!";
 } else {
-    echo "0 results";
+    echo "Invalid username or password!";
 }
-
-$conn->close();
 ?>
