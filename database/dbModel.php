@@ -1,3 +1,4 @@
+<?php
 require_once 'database/database.php';
 
 class User {
@@ -7,7 +8,7 @@ class User {
         $this->conn = $conn;
     }
 
-    public function createUser($username, $password, $firstName, $lastName, $middleName = null) {
+    public function createAccount($username, $password, $firstName, $lastName, $middleName = null) {
         $sql = "INSERT INTO users (username, password, first_name, last_name, middle_name) 
                 VALUES (?, ?, ?, ?, ?)";
         
@@ -20,6 +21,8 @@ class User {
             return false;
         }
     }
+
+
 
     public function getUsers() {
         $sql = "SELECT * FROM users";
@@ -34,3 +37,4 @@ class User {
         return $users;
     }
 }
+?>
