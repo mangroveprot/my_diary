@@ -1,14 +1,14 @@
 <?php
-require_once 'db_connection.php';
+require_once 'database/db_connection.php';
 $conn =  connections();
 class User {
-    public function createAccount($username, $password, $firstName, $lastName, $middleName = null) {
-        global $conn; // Access the global $conn variable
-        $sql = "INSERT INTO users (username, password, first_name, last_name, middle_name) 
-                VALUES (?, ?, ?, ?, ?)";
+    public function createAccount($username, $password, $firstName, $lastName, $middleName = null, $gender) {
+        global $conn;
+        $sql = "INSERT INTO users (username, password, first_name, last_name, middle_name, gender) 
+                VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $username, $password, $firstName, $lastName, $middleName);
+        $stmt->bind_param("sssss", $username, $password, $firstName, $lastName, $middleName, $gender);
         
         if ($stmt->execute()) {
             return true;
@@ -18,7 +18,7 @@ class User {
     }
 
     public function loginUser($username, $password) {
-        global $conn; // Access the global $conn variable
+        global $conn;
         $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $username, $password);
@@ -26,6 +26,10 @@ class User {
         $result = $stmt->get_result();
 
         if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            $_SESSION['uid'] = $user['uid'];
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['last_name'] = $user['last_name'];
             return true;
         } else {
             return false;
@@ -33,7 +37,7 @@ class User {
     }
 
     public function getUsers() {
-        global $conn; // Access the global $conn variable
+        global $conn;
         $sql = "SELECT * FROM users";
         $result = $conn->query($sql);
 
