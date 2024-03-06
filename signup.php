@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $error = "Password and Confirm Password do not match.";
     } else {
         $userModel = new User();
-        $success = true;//$userModel->createAccount($username, $password, $firstName, $lastName, $middleName, $gender);
+        $success = $userModel->createAccount($username, $password, $firstName, $lastName, $middleName, $gender);
         try {
             if (!$success) {
                 throw new Exception("Account creation failed. Please check your input and try again.");
