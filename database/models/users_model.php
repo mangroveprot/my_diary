@@ -8,7 +8,7 @@ class User {
                 VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $username, $password, $firstName, $lastName, $middleName, $gender);
+        $stmt->bind_param("ssssss", $username, $password, $firstName, $lastName, $middleName, $gender);
         
         if ($stmt->execute()) {
             return true;
