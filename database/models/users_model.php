@@ -1,53 +1,70 @@
 <?php
 require_once 'database/db_connection.php';
-$conn =  connections();
-class User {
-    public function createAccount($username, $password, $firstName, $lastName, $middleName = null, $gender) {
+$conn = connections();
+class User
+{
+    public function createAccount($username, $password, $firstName, $lastName, $middleName = null, $gender)
+    {
         global $conn;
-        $sql = "INSERT INTO users (username, password, first_name, last_name, middle_name, gender) 
-                VALUES (?, ?, ?, ?, ?, ?)";
-        
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $username, $password, $firstName, $lastName, $middleName, $gender);
-        
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+        try {
+            $sql = "INSERT INTO users (username, password, first_name, last_name, middle_name, gender) 
+                    VALUES (:username, :password, :firstName, :lastName, :middleName, :gender)";
 
-    public function loginUser($username, $password) {
-        global $conn;
-        $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":firstName", $firstName);
+            $stmt->bindParam(":lastName", $lastName);
+            $stmt->bindParam(":middleName", $middleName);
+            $stmt->bindParam(":gender", $gender);
 
-        if ($result->num_rows == 1) {
-            $user = $result->fetch_assoc();
-            $_SESSION['uid'] = $user['uid'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function getUsers() {
-        global $conn;
-        $sql = "SELECT * FROM users";
-        $result = $conn->query($sql);
-
-        $users = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $users[] = $row;
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                throw new Exception("Failed to create account.");
             }
+        } catch (PDOException $e) {
+            throw new Exception("Sign-Up error: " . $e->getMessage());
         }
-        return $users;
+    }
+
+    public function loginUser($username, $password)
+    {
+        global $conn;
+        try {
+            $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":password", $password);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $_SESSION['uid'] = $result['uid'];
+                $_SESSION['first_name'] = $result['first_name'];
+                $_SESSION['last_name'] = $result['last_name'];
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            throw new Exception("Log-in error: " . $e->getMessage());
+        }
+    }
+
+    public function getUsers()
+    {
+        global $conn;
+        try {
+            $sql = "SELECT * FROM users";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $users;
+        } catch (PDOException $e) {
+            throw new Exception("Error while fetching users: " . $e->getMessage());
+        }
     }
 }
 ?>
