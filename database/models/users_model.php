@@ -1,8 +1,13 @@
 <?php
-require_once 'database/db_connection.php';
+
+ //require dirname(__DIR__, 2) . '/database/db_connection.php';
+
+require dirname(__DIR__) . '/db_connection.php';
+
 $conn = connections();
 class User
 {
+  //Sign-up
     public function createAccount($username, $password, $firstName, $lastName, $middleName = null, $gender)
     {
         global $conn;
@@ -27,7 +32,8 @@ class User
             throw new Exception("Sign-Up error: " . $e->getMessage());
         }
     }
-
+    
+    //Sign-in
     public function loginUser($username, $password)
     {
         global $conn;

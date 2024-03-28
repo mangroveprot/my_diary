@@ -1,7 +1,7 @@
 <?php
 function connections()
 {
-    $servername = "127.0.0.1";
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "my_diarys";

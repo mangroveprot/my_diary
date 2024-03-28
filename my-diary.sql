@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 05, 2024 at 11:56 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Host: localhost
+-- Generation Time: Mar 16, 2024 at 09:14 AM
+-- Server version: 5.6.38
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `diaries_data`
+--
+
+CREATE TABLE `diaries_data` (
+  `diary_id` int(11) NOT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text,
+  `diary_datetime_created` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `diaries_data`
+--
+
+INSERT INTO `diaries_data` (`diary_id`, `uid`, `title`, `content`, `diary_datetime_created`) VALUES
+(100, 2, 'Todays', 'Today was a good day. I went for a walk in the park.', '2024-03-16 13:57:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -34,20 +55,29 @@ CREATE TABLE `users` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `middle_name` varchar(255) DEFAULT NULL,
-  `date_created` date DEFAULT curdate(),
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `gender` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`uid`, `username`, `password`, `first_name`, `last_name`, `middle_name`, `date_created`, `gender`) VALUES
-(2, 'admin', 'admin', 'junior', 'agong', 'opo', '2024-03-04', 'uknown');
+(1, 'john_doe', 'password123', 'John', 'Doe', 'Michael', '2024-03-14 02:06:51', 'Male'),
+(2, 'admin', 'admin', 'Admin', 'Admin', '', '2024-03-15 03:44:05', 'male'),
+(3, 'user', 'user', 'User', 'User', '', '2024-03-16 08:00:04', 'male');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `diaries_data`
+--
+ALTER TABLE `diaries_data`
+  ADD PRIMARY KEY (`diary_id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `users`
@@ -58,6 +88,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `diaries_data`
+--
+ALTER TABLE `diaries_data`
+  MODIFY `diary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `users`
