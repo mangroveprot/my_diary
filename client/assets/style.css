@@ -1,0 +1,510 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background: #a060fa;
+  background: rgb(250, 240, 250);
+  background: linear-gradient(
+    101deg,
+    rgba(250, 240, 250, 1) 0%,
+    rgba(255, 237, 251, 1) 29%
+  );
+  font-family: Arial, sans-serif;
+}
+.log-box {
+  text-align: center;
+  margin-left: 30px;
+  width: 200px;
+  background-color: #8a69b8;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.log-box p {
+  margin: 5px 0;
+}
+body,
+h1,
+h2,
+p,
+label,
+input,
+textarea,
+select,
+option,
+button {
+  margin: 0;
+  padding: 0;
+}
+/* Navbar styles */
+.navbars {
+  background-color: #333;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.navbars a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbars a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbars a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+/* Centered content */
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.transparent-box {
+  background-color: #7a6497;
+  color: white;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.transparent-box h2 {
+  margin-top: 0;
+}
+
+.diary-logo {
+  width: 150px;
+  margin-top: 20px;
+}
+
+.background-text {
+  font-style: italic;
+  color: white;
+}
+.transparent-box form {
+  margin-top: 20px;
+}
+
+.transparent-box label {
+  display: block;
+  font-weight: bold;
+}
+
+.transparent-box input[type="text"],
+.transparent-box textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.transparent-box button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.transparent-box button:hover {
+  background-color: #3e8e60;
+}
+
+.signup-box {
+  background-color: #7a6497;
+  color: white;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.signup-box h2 {
+  margin-top: 0;
+}
+
+.signup-box form {
+  margin-top: 20px;
+}
+
+.signup-box label {
+  display: block;
+  font-weight: bold;
+}
+
+.signup-box input[type="text"],
+.signup-box input[type="password"],
+.signup-box select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.signup-box p {
+  margin-top: 10px;
+}
+.signup-box {
+  position: relative; /* Add position relative to create a stacking context */
+}
+
+#togglePassword {
+  /* CSS styles for the Password eye toggle */
+  position: absolute;
+  top: 26%;
+  transform: translateY(-50%);
+  right: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+#toggleConfirmPassword {
+  /* CSS styles for the Confirm Password eye toggle */
+  position: absolute;
+  top: 37%;
+  transform: translateY(-50%);
+  right: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+.login-box {
+  background-color: #7a6497;
+  color: white;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 8px;
+  margin-top: 100px;
+}
+
+.login-box h2 {
+  margin-top: 0;
+}
+
+.login-box form {
+  margin-top: 20px;
+}
+
+.login-box label {
+  display: block;
+  font-weight: bold;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.login-box .password-input {
+  position: relative;
+}
+
+.login-box .password-input input[type="password"] {
+  padding-right: 30px;
+}
+
+.login-box .password-input .eye-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
+    rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px,
+    rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px,
+    rgba(44, 187, 99, 0.15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
+    rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
+    rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
+    rgba(44, 187, 99, 0.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+.login-box p {
+  margin-top: 20px;
+}
+.search-form {
+  margin-top: 15px;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 80% width */
+  border-radius: 8px;
+}
+
+.modal-content .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content form {
+  margin-top: 10px;
+}
+
+.modal-content label {
+  display: block;
+  font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-content button:hover {
+  background-color: #3e8e60;
+}
+
+.modal-content p {
+  margin-top: 10px;
+}
+.error_type {
+  color: red;
+  color: var(white);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+}
+
+.notify {
+  color: green;
+}
+
+.btn {
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*View Diary Modal*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.edit-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+}
+
+#editTitle {
+  width: 80%;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+#editContent {
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  resize: none;
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*End of modal*/
+.para {
+  color: green;
+}
+/* Footer styles */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  mask-position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 100;
+}
+
+.no_content {
+  color: #333;
+  padding-top: 10rem;
+  text-align: center;
+}
